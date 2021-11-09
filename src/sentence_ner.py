@@ -36,10 +36,7 @@ class SentenceNer:
                 tmp["type"] = word_entity[1]
                 tmp["start"] = sentence.find(word_entity[0])
                 tmp_array.append(tmp)
-            if len(tmp_array) >= 2 and count_O!=0:
-                total_array.append(tmp_array)
-            else:
-                total_array.append([])
+            total_array.append(tmp_array)
 
         tmp_df = pd.concat([df,pd.DataFrame({"entity":total_array})],axis=1)
         tmp_df.to_csv(self.args.output_dir + self.args.entity_csv,index=False)
