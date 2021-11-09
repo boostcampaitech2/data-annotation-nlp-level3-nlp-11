@@ -20,11 +20,11 @@ class SentenceNer:
             entity_csv = self.args.entity_csv
 
         df = self.get_csv()
-        ner = Pororo(task="ner", lang="ko",apply_wsd=self.args.use_applywsd)
+        ner = Pororo(task="ner", lang="ko")
 
         total_array = []
         for i,sentence in enumerate(tqdm(df["sentence"])):
-            result = ner(sentence)
+            result = ner(sentence,apply_wsd=self.args.use_applywsd)
             tmp_array = []
             count_O = 0
             for word_entity in result:
