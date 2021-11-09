@@ -6,7 +6,7 @@ from src.crawling import Crawling
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # data dir
-    parser.add_argument('--data_path', type=str, default="./data/crawling-data/")
+    parser.add_argument('--data_path', type=str, default="./data/original-data/")
     parser.add_argument('--output_dir',type=str, default="./output/")
     parser.add_argument('--raw_csv', type=str, default="raw_data.csv")
     parser.add_argument('--entity_csv', type=str, default="entity_data.csv")
