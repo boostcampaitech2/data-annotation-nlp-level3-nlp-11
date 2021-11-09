@@ -58,4 +58,3 @@ if __name__ == '__main__':
 
     # # {output_dir}{raw_csv} 기반 {output_dir}{entity_csv} 생성
     SentenceNer(args)
-

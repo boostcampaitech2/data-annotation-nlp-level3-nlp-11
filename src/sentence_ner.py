@@ -23,8 +23,12 @@ class SentenceNer:
         ner = Pororo(task="ner", lang="ko")
 
         total_array = []
+        error_index = []
         for i,sentence in enumerate(tqdm(df["sentence"])):
-            result = ner(sentence,apply_wsd=self.args.use_applywsd)
+            try:
+                result = ner(sentence,apply_wsd=self.args.use_applywsd)    
+            except:
+                error_index.append(i)
             tmp_array = []
             count_O = 0
             for word_entity in result:
@@ -40,6 +44,6 @@ class SentenceNer:
                 total_array.append(tmp_array)
             else:
                 total_array.append([])
-
+        print(f'error idex : {error_index}')
         tmp_df = pd.concat([df,pd.DataFrame({"entity":total_array})],axis=1)
         tmp_df.to_csv(self.args.output_dir + self.args.entity_csv,index=False)
