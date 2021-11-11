@@ -3,6 +3,7 @@ from src.sentence_segmentation import SentenceSagmentation
 from src.sentence_ner import SentenceNer
 from src.crawling import Crawling
 from src.EDA import Eda
+from src.util.replace_entity import ReplaceEntity
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -60,6 +61,9 @@ if __name__ == '__main__':
 
     # # {output_dir}{raw_csv} 기반 {output_dir}{entity_csv} 생성
     SentenceNer(args)
+
+    # replace (entity 변경 ./src/util/replace_entity.py 에서 regex 수정)
+    ReplaceEntity(args)
 
     if args.show_entity_count:
         Eda(args)
