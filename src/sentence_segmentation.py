@@ -42,4 +42,4 @@ class SentenceSagmentation:
             
             df = pd.concat([pd.DataFrame({"doc":file_list[i].split('.')[0],"sentence": sentence_array}),df])
 
-        df.to_csv(self.args.output_dir + self.args.raw_csv,index=False)
+        df.to_csv(self.args.output_dir + self.args.raw_csv,index=False,encoding="utf-8-sig")
