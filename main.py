@@ -4,6 +4,7 @@ from src.sentence_ner import SentenceNer
 from src.crawling import Crawling
 from src.EDA import Eda
 from src.util.replace_entity import ReplaceEntity
+from src.util.get_sentence_only import GetSentencenly
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -12,6 +13,7 @@ if __name__ == '__main__':
     parser.add_argument('--output_dir',type=str, default="./output/")
     parser.add_argument('--raw_csv', type=str, default="raw_data.csv")
     parser.add_argument('--entity_csv', type=str, default="entity_data.csv")
+    parser.add_argument('--split_result_data', type=int, default=0)
     parser.add_argument('--use_applywsd',type=bool, default=False)
     parser.add_argument('--use_crawling',type=bool, default=False)
     parser.add_argument('--show_entity_count',type=bool, default=False)
@@ -67,3 +69,7 @@ if __name__ == '__main__':
 
     if args.show_entity_count:
         Eda(args)
+
+    # 전체문장을 N개로 분리 진행
+    if args.split_result_data !=0:
+        GetSentencenly(args).split_sentence(args.split_result_data)
