@@ -2,6 +2,7 @@ import argparse
 from src.sentence_segmentation import SentenceSagmentation
 from src.sentence_ner import SentenceNer
 from src.crawling import Crawling
+from src.EDA import Eda
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -12,6 +13,7 @@ if __name__ == '__main__':
     parser.add_argument('--entity_csv', type=str, default="entity_data.csv")
     parser.add_argument('--use_applywsd',type=bool, default=False)
     parser.add_argument('--use_crawling',type=bool, default=False)
+    parser.add_argument('--show_entity_count',type=bool, default=False)
     args = parser.parse_args()
 
 
@@ -58,3 +60,6 @@ if __name__ == '__main__':
 
     # # {output_dir}{raw_csv} 기반 {output_dir}{entity_csv} 생성
     SentenceNer(args)
+
+    if args.show_entity_count:
+        Eda(args)
