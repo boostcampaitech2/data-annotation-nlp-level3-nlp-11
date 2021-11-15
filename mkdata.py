@@ -37,6 +37,7 @@ for folder in dir_list:
         
             sentence = sentence.split('</pre>')[0]
             sentence = sentence.split('>')[2]
+            sentence = sentence.strip('_')
   
         if len(data_info['entities']) != 2:
             print('==============')
