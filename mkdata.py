@@ -63,6 +63,8 @@ for folder in dir_list:
                 print(sentence)
                 break
             sentence = sentence[:start] + f'<{entity_type[0]} :{offset_info["text"]}>' + sentence[end:]
+            if "___" in sentence:
+                sentence = sentence.split('___')[0]
         nowdic['sentence'] = sentence
         datafordf.append(nowdic)
 
