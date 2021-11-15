@@ -45,10 +45,14 @@ for folder in dir_list:
             print('================')
             continue
         nowdic = {'sentence' : None, 'OBJ' : '', 'SUB' : '' } 
+        before_start = -1
         for i in range(2):
             info = data_info['entities'][i]
             offset_info = info['offsets'][0]
-            start = offset_info['start'] + i*7
+            start = offset_info['start']
+            if start > before_start:
+                start += i *7
+            before_start = start
             end = start + len(offset_info['text'])
             entity_type = annotation_info[info['classId']].split('_')
             nowdic[entity_type[0]] = entity_type[1]
