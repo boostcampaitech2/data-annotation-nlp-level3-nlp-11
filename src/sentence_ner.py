@@ -46,4 +46,4 @@ class SentenceNer:
                 total_array.append([])
         print(f'error idex : {error_index}')
         tmp_df = pd.concat([df,pd.DataFrame({"entity":total_array})],axis=1)
-        tmp_df.to_csv(self.args.output_dir + self.args.entity_csv,index=False)
+        tmp_df.to_csv(self.args.output_dir + self.args.entity_csv,index=False,encoding="utf-8-sig")
